@@ -53,6 +53,16 @@ write =
 ```
 * Run `AMI Queue Monitor.exe`
 
+### Application behavior configuration
+```
+    <add key="PollInterval" value="1000"/>
+    <add key="AlwaysOnTop" value="true"/>
+    <add key="PopupOnNewCall" value="true"/>
+    <add key="StartAutoPollOnStartup" value="true"/>
+    <add key="HightlightRowIfQueueNotEmpty" value="true"/>
+    <add key="DateTimeFormat" value="H:mm:ss"/>
+```
+
 ### UI configuration
 If you want to change look-and-feel of the application you can configure following settings:
 ```
