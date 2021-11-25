@@ -111,6 +111,10 @@ namespace AMIQueueMonitor
             // Style settings
             try
             {
+                string cnfOrigin = ConfigurationManager.AppSettings["FormOrigin"];
+                string[] Coords = cnfOrigin.Split(',');
+                string cnfSize = ConfigurationManager.AppSettings["FormSize"];
+                string[] Size = cnfSize.Split(',');
                 WindowTitle = ConfigurationManager.AppSettings["WindowTitle"];
                 var fontConverter = new FontConverter();
                 ConsoleFont = fontConverter.ConvertFromString(ConfigurationManager.AppSettings["ConsoleFont"]) as Font;
@@ -118,10 +122,10 @@ namespace AMIQueueMonitor
                 TableRowsFont = fontConverter.ConvertFromString(ConfigurationManager.AppSettings["TableRowsFont"]) as Font;
                 StateIndicatorsFont = fontConverter.ConvertFromString(ConfigurationManager.AppSettings["StateIndicatorsFont"]) as Font;
                 TableHeadersHeight = int.Parse(ConfigurationManager.AppSettings["TableHeadersHeight"]);
-                FormOrigin = (Point)new PointConverter().ConvertFromString(ConfigurationManager.AppSettings["FormOrigin"]);
-                FormSize = (Size)new SizeConverter().ConvertFromString(ConfigurationManager.AppSettings["FormSize"]);
-                ConsoleSplitterRatio = float.Parse(ConfigurationManager.AppSettings["ConsoleSplitterRatio"]);
-                QueuesSplitterRatio = float.Parse(ConfigurationManager.AppSettings["QueuesSplitterRatio"]);
+                FormOrigin = new Point(int.Parse(Coords[0]), int.Parse(Coords[1]));
+                FormSize = new Size(int.Parse(Size[0]), int.Parse(Size[1]));
+                ConsoleSplitterRatio = float.Parse(ConfigurationManager.AppSettings["ConsoleSplitterRatio"]);//,splitter in cfg
+                QueuesSplitterRatio = float.Parse(ConfigurationManager.AppSettings["QueuesSplitterRatio"]);//,splitter in cfg
                 TableHeadersColor = ColorTranslator.FromHtml(ConfigurationManager.AppSettings["TableHeadersColor"]);
                 TableGridsColor = ColorTranslator.FromHtml(ConfigurationManager.AppSettings["TableGridsColor"]);
                 ConsoleAreaColor = ColorTranslator.FromHtml(ConfigurationManager.AppSettings["ConsoleAreaColor"]);
